@@ -1,0 +1,27 @@
+{
+  "name": "dev",
+  "version": "1.0.0",
+  "description": "Facebook scheduler ",
+  "main": "server.js ",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Vikram Thomas",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.0.1",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.15.2",
+    "cron": "^1.1.1",
+    "express": "^4.14.0",
+    "form-data": "^2.1.1",
+    "formidable": "^1.0.17",
+    "moment": "^2.15.1",
+    "mongo": "^0.1.0",
+    "mongodb": "^2.2.10",
+    "multiparty": "^4.1.2",
+    "q": "^1.4.1",
+    "request": "^2.75.0"
+  }
+}

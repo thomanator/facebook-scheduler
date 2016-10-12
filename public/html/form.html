@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Facebook schedueler</title>
+	 <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+          
+</head>
+<body>
+
+	<!--
+    <div class="file-field input-field">
+      <div class="btn">
+        <span>File</span>
+        <input type="file">
+      </div>
+      <div class="file-path-wrapper">
+        <input class="file-path validate" type="text">
+      </div>
+    </div>
+     <button class="btn waves-effect waves-light" type="submit">Submit		
+	</button>
+  </form>
+  -->
+   <form action="http://localhost:3000/photo" method="post" enctype="multipart/form-data">'
+   <input type="text" name="caption">
+   <input type="file" name="upload" multiple="multiple"><br>
+   <input type="submit" value="Upload File">
+   </form>
+
+</body>
+</html>
