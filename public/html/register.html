@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+		<script type="text/javascript" src='/js/app.js'></script>
+		<title>	Facebook scheduler </title>
+	</head>
+	<body ng-app = 'myApp' >	
+	 	<div ng-controller = 'mainController'>
+	 		Username <input type="text" ng-model = 'username'></input><br>
+	 		Password <input type="password" ng-model = 'password'></input><br>
+	 		First Name <input type="text" ng-model = 'firstname'></input><br>
+	 		Last Name <input type="text" ng-model = 'lastname'></input><br>
+			<button ng-click = 'register()'>Submit</button>	 			
+			<p>{{errorMessage}}</p>	
+	 	</div>
+	</body>
+</html>

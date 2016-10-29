@@ -4,6 +4,7 @@ var bodyParser = require('body-parser')
 var config = require('./config.js')
 var dbPool = require('./dbPool.js')
 
+app.use(express.static(__dirname + '/public'))
 app.use(bodyParser.json())
 
 require('./routes.js')(app)

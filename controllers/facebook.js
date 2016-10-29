@@ -54,7 +54,7 @@ function facebook() {
 
 	this.photoPhost = function(req,res) {
 		var form = new formidable.IncomingForm()
-		var photo=true,scheduled=true
+		var photo=true,scheduled=false
 		var resJson = {
 			status: 'failure',
 			message: '', 
@@ -76,24 +76,7 @@ function facebook() {
 						},function(err) {
 							resJson['message'] = err
 							return res.json(resJson)
-						})
-					    /*																																		
-						var photoUrl = 'https://graph.facebook.com/'+user.facebook.id+'/photos?access_token='+user.facebook.token														
-						var serverRequest = request.post('https://graph.facebook.com/me/photos?access_token='+user.facebook.token, function(err, res, body) {						    									
-						    if(err) {
-						        resJson['message'] = err
-								return res.json(resJson)
-						    }
-						    else {
-						    	resJson['status'] = 'success',
-						    	return res.json(resJson)						    	
-						    }
-						});
-
-						var form = serverRequest.form()
-						form.append('message',fields.caption);
-						form.append('source', fs.createReadStream(files.upload.path));																																			
-						*/
+						})					    
 					}
 					else {
 						photoScheduler(files,fields,user).then(function() {
@@ -103,40 +86,7 @@ function facebook() {
 						},function(err) {
 							resJson['message'] = err
 							return res.json(resJson)
-						})			
-						/*						
-						fs.readFile(files.upload.path,function(err,data) {
-							if(err) {
-								console.log(err)
-							}
-							else {								
-								var insertPath = user.username+new Date().getTime()+'.png'
-								fs.writeFile(config.dir+'/public/upload-files/'+insertPath,data,function(err) {
-									if(err) {
-										console.log(err)
-									}
-									else {
-										var scheduledTime = moment('2016-10-11T06:15:00').toDate().getTime()
-										var postObject = {
-											path: insertPath,
-											scheduledTime: scheduledTime,
-											username: user.username,
-											message: fields.caption,
-											scheduled: true									
-										}
-
-										postModel.insert(postObject,{},{}).then(function() {
-											resJson['status'] = 'success'
-											return res.json(resJson)
-										},function(err) {
-											resJson['message'] = err
-											return res.json(resJson)
-										})
-									}
-								})
-							}									
-						})
-						*/																																																				
+						})																																																			
 					}					
 				}		
 				else {
@@ -167,6 +117,7 @@ function facebook() {
 		return q.promise
 	}
 
+	// A function that fetches the facebook id of a person
 	function informationFetcher(longAccessToken) {
 		var q = Q.defer()		
 		request({
@@ -203,6 +154,7 @@ function facebook() {
 		return q.promise
 	}
 
+	//function for uploading a photo to facebook 
 	function photoUploader(files,fields,user) {																
 		var q = Q.defer()
 
@@ -221,6 +173,7 @@ function facebook() {
 		return q.promise
 	}
 
+	//function for scheduling a photo to be uploaded on facebook 
 	function photoScheduler(files,fields,user) {
 		var q = Q.defer()
 		var postModel = require(config.dir+'/models/post.js')
@@ -228,14 +181,15 @@ function facebook() {
 			if(err) {
 				q.reject(err)
 			}
-			else {								
+			else {					
+				console.log('User',user)			
 				var insertPath = user.username+new Date().getTime()+'.png'
 				fs.writeFile(config.dir+'/public/upload-files/'+insertPath,data,function(err) {
 					if(err) {
 						q.reject(err)
 					}
 					else {
-						var scheduledTime = moment('2016-10-11T19:55:00').toDate().getTime()
+						var scheduledTime = moment('2016-10-12T14:50:00').toDate().getTime()
 						var postObject = {
 							path: insertPath,
 							scheduledTime: scheduledTime,

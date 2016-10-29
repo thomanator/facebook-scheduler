@@ -7,6 +7,9 @@ module.exports = function(app) {
 	app.post('/register',user.register)
 	app.post('/login',user.login)
 	app.post('/logout',user.logout)
+	app.get('/register',function(req,res) {
+		res.sendFile(config.dir+'/public/html/register.html')
+	})
 
 	app.get('/fbOauth',facebook.oauth)
 	app.get('/fbhandle',facebook.handle)
